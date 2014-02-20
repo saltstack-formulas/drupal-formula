@@ -18,18 +18,18 @@ extract-drupal:
 
 {% if salt['pillar.get']('webserver:apache2', 'apache2') %}
 
-/etc/apache2/sites-available/salt['pillar.get']('drupal:name'):
+/etc/apache2/sites-available/{{ salt['pillar.get']('drupal:name') }}:
     file.managed:
         - source: salt://drupal/files/apache2
 {% elif salt['pillar.get']('webserver:nginx') %}
 
-/etc/nginx/salt['pillar.get']('drupal:name'):
+/etc/nginx/{{ salt['pillar.get']('drupal:name') }}:
     file.managed:
         - source: salt://drupal/files/nginx
 # TODO: Add support for webserver
 {% elif salt['pillar.get']('webserver:lighthttpd') %}
 
-/etc/lighthtpd/salt['pillar.get']('drupal:name'):
+/etc/lighthtpd/{{ salt['pillar.get']('drupal:name') }}:
     file.managed:
         - source: salt://drupal/files/lighthttpd
 # TODO: Add support for webserver
