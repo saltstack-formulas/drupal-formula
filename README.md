@@ -1,5 +1,5 @@
 ======
-durpal
+drupal
 ======
 
 Formula to set up and configure drupal cms.
@@ -15,7 +15,7 @@ Available states
 .. contents::
     :local:
 
-``durpal``
+``drupal``
 ----------
 
 Installs drupal.
@@ -24,3 +24,4 @@ Formula Dependencies
 --------------------
 
 * php
+
