@@ -2,14 +2,16 @@ include:
     - php
 
 drupal:
-    archive:
-        - extracted
-        - tar_options: J
-        - archive_format: tar
-        - name:  {{ salt['pillar.get']('drupal:home', '/var/www/drupal') }}
+    file.managed:
+        - unless: ls {{ salt['pillar.get']('drupal:home', '/var/www/drupal') }}/sites/default/settings.php
+        - name: /tmp/drupal-{{ salt['pillar.get']('drupal:version', '7.26') }}.tar.gz
         - source: http://ftp.drupal.org/files/projects/drupal-{{ salt['pillar.get']('drupal:version', '7.26') }}.tar.gz
         - source_hash: {{ salt['pillar.get']('drupal:source_hash') }}
-        - if_missing: {{ salt['pillar.get']('drupal:home', '/var/www/drupal') }}
+    module.run:
+        - name: archive.gunzip
+        - options: zxf
+        - zipfile: /tmp/drupal-{{ salt['pillar.get']('drupal:version', '7.26') }}.tar.gz
+        - dest: {{ salt['pillar.get']('drupal:home', '/var/www/') }}{{ salt['pillar.get']('drupal:name', 'drupal') }}
 
 
 {% if salt['pillar.get']('webserver:apache2', 'apache2') %}
