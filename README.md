@@ -1,4 +1,26 @@
-template-formula
+======
+durpal
+======
+
+Formula to set up and configure drupal cms.
+
+.. note::
+
+    See the full `Salt Formulas installation and usage instructions
+    <http://docs.saltstack.com/topics/conventions/formulas.html>`_.
+
+Available states
 ================
 
-A saltstack formula that is empty. It has dummy content to help with a quick start on a new formula.
+.. contents::
+    :local:
+
+``durpal``
+----------
+
+Installs drupal.
+
+Formula Dependencies
+--------------------
+
+* php
