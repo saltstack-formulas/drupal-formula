@@ -7,6 +7,8 @@ drupal:
         - name: /tmp/drupal-{{ salt['pillar.get']('drupal:version', '7.26') }}.tar.gz
         - source: http://ftp.drupal.org/files/projects/drupal-{{ salt['pillar.get']('drupal:version', '7.26') }}.tar.gz
         - source_hash: {{ salt['pillar.get']('drupal:source_hash') }}
+
+extract-drupal:
     module.run:
         - name: archive.gunzip
         - options: zxf
