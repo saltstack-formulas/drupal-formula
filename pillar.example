@@ -7,5 +7,3 @@ drupal:
     source_hash: md5=740bd55f524b8ac18a203b663ca1329d
 webserver:
     apache2:
-    user: www-data
-    group: www-data
