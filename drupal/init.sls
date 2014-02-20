@@ -12,7 +12,7 @@ extract-drupal:
     module.run:
         - name: archive.gunzip
         - options: zxf
-        - zipfile: /tmp/drupal-{{ salt['pillar.get']('drupal:version', '7.26') }}.tar.gz
+        - gunzip: /tmp/drupal-{{ salt['pillar.get']('drupal:version', '7.26') }}.tar.gz
         - dest: {{ salt['pillar.get']('drupal:home', '/var/www/') }}{{ salt['pillar.get']('drupal:name', 'drupal') }}
 
 
