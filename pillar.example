@@ -4,6 +4,6 @@ drupal:
     port: 80
     home: /var/www
     version: '7.26'
-    source_hash: md5=740bd55f524b8ac18a203b663ca1329d
+    source_hash: 'md5=740bd55f524b8ac18a203b663ca1329d'
 webserver:
     apache2:
