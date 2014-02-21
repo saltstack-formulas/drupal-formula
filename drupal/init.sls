@@ -8,13 +8,26 @@ drupal:
         - source: http://ftp.drupal.org/files/projects/drupal-{{ salt['pillar.get']('drupal:version', '7.26') }}.tar.gz
         - source_hash: {{ salt['pillar.get']('drupal:source_hash') }}
 
+
+{{ salt['pillar.get']('drupal:home', '/var/www/') }}:
+    file.directory:
+        - user: www-data
+        - group: www-data
+        - dir_mode: 755
+        - file_mode: 644
+        - makedirs: True
+
 extract-drupal:
     module.run:
-        - name: archive.gunzip
+        - name: archive.tar
         - options: zxf
-        - gunzip: /tmp/drupal-{{ salt['pillar.get']('drupal:version', '7.26') }}.tar.gz
-        - dest: {{ salt['pillar.get']('drupal:home', '/var/www/') }}{{ salt['pillar.get']('drupal:name', 'drupal') }}
+        - tarfile: /tmp/drupal-{{ salt['pillar.get']('drupal:version', '7.26') }}.tar.gz
+        - dest: {{ salt['pillar.get']('drupal:home', '/var/www/') }}
 
+rename-drupal:
+    file.rename:
+        - name: {{ salt['pillar.get']('drupal:home', '/var/www/') }}/drupal-{{ salt['pillar.get']('drupal:name') }}
+        - source: {{ salt['pillar.get']('drupal:home', '/var/www/') }}/drupal-{{ salt['pillar.get']('drupal:version', '7.26') }}
 
 {% if salt['pillar.get']('webserver:apache2', 'apache2') %}
 
