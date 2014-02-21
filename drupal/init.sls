@@ -26,7 +26,7 @@ extract-drupal:
 
 rename-drupal:
     file.rename:
-        - name: {{ salt['pillar.get']('drupal:home', '/var/www/') }}/drupal-{{ salt['pillar.get']('drupal:name') }}
+        - name: {{ salt['pillar.get']('drupal:home', '/var/www/') }}/{{ salt['pillar.get']('drupal:name') }}
         - source: {{ salt['pillar.get']('drupal:home', '/var/www/') }}/drupal-{{ salt['pillar.get']('drupal:version', '7.26') }}
 
 {% if salt['pillar.get']('webserver:apache2', 'apache2') %}
