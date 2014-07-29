@@ -21,7 +21,7 @@ Available states
 Installs drupal.
 
 Formula Dependencies
---------------------
+====================
 
 * php
 
