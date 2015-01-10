@@ -24,4 +24,8 @@ Formula Dependencies
 ====================
 
 * php
+* apache
+* nginx
+* mysql
+* postgresql
 
