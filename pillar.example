@@ -1,7 +1,11 @@
 drupal:
-    name: drupal
+  lookup:
+    name: drupalsite
     ip: '*'
     port: 80
+    user: 'drupaladmin'
+    group: 'www-data'
     home: /var/www
     version: '7.26'
     source_hash: 'md5=740bd55f524b8ac18a203b663ca1329d'
+    fix_permissions: True
