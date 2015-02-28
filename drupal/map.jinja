@@ -1,0 +1,24 @@
+{% set drupal = salt['grains.filter_by']({
+  'Debian': {
+    'name'            : 'drupal',
+    'user'            : 'www-data',
+    'group'           : 'www-data',
+    'ip'              : '*',
+    'port'            : 80,
+    'home'            : '/var/www',
+    'version'         : '7.34',
+    'source_hash'     : 'md5=bb4d212e1eb1d7375e41613fbefa04f2',
+    'fix_permissions' : False,
+  },
+  'RedHat': {
+    'name'        : 'drupal',
+    'user'        : 'www-data',
+    'group'       : 'www-data',
+    'ip'          : '*',
+    'port'        : 80,
+    'home'        : '/var/www',
+    'version'     : '7.34',
+    'source_hash' : 'md5=bb4d212e1eb1d7375e41613fbefa04f2',
+    'fix_permissions' : False,
+  },
+}, merge=salt['pillar.get']('drupal:lookup')) %}
